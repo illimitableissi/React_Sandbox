@@ -13,7 +13,7 @@ counterUp = () => {
     })
 }
 
-counterDown = () =>{
+counterDown = () => {
     this.setState({
         talley: this.state.talley - 1
     })
