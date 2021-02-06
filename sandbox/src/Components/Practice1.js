@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Practice1 = () => {
 
     const [count, setCount] = useState(0)
+    const [number, setNumber] = useState(0)
 
     return (
         <div>
