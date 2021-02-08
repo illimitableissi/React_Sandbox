@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Practice2 = () => {
 
     const [stuff, newStuff] = useState(["0", "1", "2"])
+    const [stuff, newStuff] = useState(["0", "1", "2"])
 
     return (
         <div>
