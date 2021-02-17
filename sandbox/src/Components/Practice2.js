@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 
 const Practice2 = () => {
 
-    const [stuff, newStuff] = useState(["0", "1", "2"])
+    const [toggle, toggleControl] = useState("OFF")
 
     return (
         <div>
-            <p>stuff</p>
-            <h1>more stuff</h1>
-            <h2></h2>
+            <button onClick={()=> toggleControl(toggle  === "OFF" ? 'ON' : 'OFF')}>{toggle}</button>
         </div>
     );
 };
