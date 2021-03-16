@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-bootstrap/Modal'
 
 class Pokemon extends React.Component {
 
@@ -18,23 +19,32 @@ class Pokemon extends React.Component {
             .catch(err => console.log(err));
         }
     
-    showModal () {
+    showModal = () => {
         this.setState({ show: true})
     }
     
-    closeModal () {
+    closeModal = () => {
         this.setState({ show: false})
     }
 
     render (){
         var onePokemon = this.state.pokemon
+
         return (
             <div>
-                {/* <img src={onePokemon.sprites.back_default} /> */}
+                {/* <img src={sprites} /> */}
+                <Modal show={this.state.show}>
+                    <h1>Abilities</h1>
+                    <p>Base Experience: {onePokemon.base_experience}</p>
+                    <p>Weight: {onePokemon.weight}</p>
+                    <p>Height: {onePokemon.height}</p>
+                    {/* {onePokemon.moves.map(move => 
+                        <p>Moves: {move.name}</p>
+                        )} */}
+                    <button onClick={this.closeModal}>Close</button>
+                </Modal>
                 <h1>{onePokemon.name}</h1>
-                <modal show={this.state.show}>
-                    <h1>this works</h1>
-                </modal>
+                <button onClick={this.showModal}>Click here for more details</button>
             </div>
         )
     };
