@@ -5,6 +5,9 @@ class Pokemon extends React.Component {
 
     state = {
         pokemon: [],
+        abilities: [],
+        moves: [],
+        img:'',
         show: false
     }
 
@@ -13,9 +16,12 @@ class Pokemon extends React.Component {
         .then(res => res.json())
         .then(response => {
             this.setState({ 
-                pokemon: response
+                pokemon: response,
+                abilities: response.abilities,
+                moves:  response.moves,
+                img: response.sprites
             })
-            console.log(this.state.pokemon)})
+            console.log(this.state.img)})
             .catch(err => console.log(err));
         }
     
@@ -32,15 +38,20 @@ class Pokemon extends React.Component {
 
         return (
             <div>
-                {/* <img src={sprites} /> */}
+                <img src={this.state.img.front_default} />
                 <Modal show={this.state.show}>
-                    <h1>Abilities</h1>
+                    <h1>Stats</h1>
+                    <h2>Abilities</h2>
+                    {this.state.abilities.map(j => 
+                    <p>{j.ability.name}</p>
+                    )}
                     <p>Base Experience: {onePokemon.base_experience}</p>
                     <p>Weight: {onePokemon.weight}</p>
                     <p>Height: {onePokemon.height}</p>
-                    {/* {onePokemon.moves.map(move => 
-                        <p>Moves: {move.name}</p>
-                        )} */}
+                    <h2>Moves: </h2>
+                    {this.state.moves.map(i => 
+                     <p>{i.move.name}</p>
+                    )}
                     <button onClick={this.closeModal}>Close</button>
                 </Modal>
                 <h1>{onePokemon.name}</h1>
