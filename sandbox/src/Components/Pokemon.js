@@ -21,7 +21,7 @@ class Pokemon extends React.Component {
                 moves:  response.moves,
                 img: response.sprites
             })
-            console.log(this.state.img)})
+            console.log(this.state.pokemon)})
             .catch(err => console.log(err));
         }
     
@@ -34,27 +34,26 @@ class Pokemon extends React.Component {
     }
 
     render (){
-        var onePokemon = this.state.pokemon
-
+        const { pokemon, abilities, moves, img, show} = this.state;
         return (
             <div>
-                <img src={this.state.img.front_default} />
-                <Modal show={this.state.show}>
+                <img src={img.front_default} alt='sprite' />
+                <Modal show={show}>
                     <h1>Stats</h1>
                     <h2>Abilities</h2>
-                    {this.state.abilities.map(j => 
+                    {abilities.map(j => 
                     <p>{j.ability.name}</p>
                     )}
-                    <p>Base Experience: {onePokemon.base_experience}</p>
-                    <p>Weight: {onePokemon.weight}</p>
-                    <p>Height: {onePokemon.height}</p>
+                    <p>Base Experience: {pokemon.base_experience}</p>
+                    <p>Weight: {pokemon.weight}</p>
+                    <p>Height: {pokemon.height}</p>
                     <h2>Moves: </h2>
-                    {this.state.moves.map(i => 
+                    {moves.map(i => 
                      <p>{i.move.name}</p>
                     )}
                     <button onClick={this.closeModal}>Close</button>
                 </Modal>
-                <h1>{onePokemon.name}</h1>
+                <h1>{pokemon.name}</h1>
                 <button onClick={this.showModal}>Click here for more details</button>
             </div>
         )
