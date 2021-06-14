@@ -12,7 +12,7 @@ function App() {
   if (!show) {
   return (
     <div>
-      <button onClick={() => makeShow(show === true)}>Click this button to bring up apps</button>
+      <button onClick={() => makeShow(true)}>Click this button to bring up apps</button>
     </div>
     )
   } 
@@ -20,6 +20,7 @@ function App() {
   if (show){
     return (
       <div>
+        <button onClick={() => makeShow(false)}>Click this button to bring up apps</button>
         <Button />
         <Practice1 />
         <Practice2 />
